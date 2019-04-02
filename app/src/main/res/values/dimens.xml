@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="user_card_elevation">4dp</dimen>
+    <dimen name="user_card_margin">4dp</dimen>
+</resources>
