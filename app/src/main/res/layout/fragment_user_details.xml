@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:padding="24dp"
+            tools:context=".users.details.UserDetailsFragment">
+
+            <ImageView
+                android:id="@+id/image_avatar"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="image_avatar"
+                app:layout_constraintBottom_toTopOf="@id/text_id"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_logo" />
+
+            <TextView
+                android:id="@+id/text_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/UserDetailsText"
+                app:layout_constraintBottom_toTopOf="@id/text_login"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_avatar"
+                tools:text="id" />
+
+            <TextView
+                android:id="@+id/text_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/UserDetailsText"
+                app:layout_constraintBottom_toTopOf="@id/text_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_id"
+                tools:text="text_login" />
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/UserDetailsText"
+                android:hint="@string/no_name"
+                app:layout_constraintBottom_toTopOf="@id/text_company"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_login"
+                tools:text="name" />
+
+            <TextView
+                android:id="@+id/text_company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/UserDetailsText"
+                android:hint="@string/no_company"
+                app:layout_constraintBottom_toTopOf="@id/text_location"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_name"
+                tools:text="company" />
+
+            <TextView
+                android:id="@+id/text_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/UserDetailsText"
+                android:hint="@string/no_location"
+                app:layout_constraintBottom_toTopOf="@id/text_email"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_company"
+                tools:text="location" />
+
+            <TextView
+                android:id="@+id/text_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/UserDetailsText"
+                android:hint="@string/no_email"
+                app:layout_constraintBottom_toTopOf="@id/text_bio"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_location"
+                tools:text="email" />
+
+            <TextView
+                android:id="@+id/text_bio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/UserDetailsText"
+                android:hint="@string/no_biography"
+                app:layout_constraintBottom_toTopOf="@id/text_url"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_email"
+                tools:text="bio" />
+
+            <TextView
+                android:id="@+id/text_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/UserDetailsText"
+                android:hint="@string/no_url"
+                app:layout_constraintBottom_toTopOf="@id/text_repo_count"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_bio"
+                tools:text="url" />
+
+            <TextView
+                android:id="@+id/text_repo_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/UserDetailsText"
+                app:layout_constraintBottom_toTopOf="@id/text_follower_count"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_url"
+                tools:text="repo count" />
+
+            <TextView
+                android:id="@+id/text_follower_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/UserDetailsText"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_repo_count"
+                tools:text="follower count" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/group_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="text_follower_count,text_name,text_bio,text_login,text_repo_count,text_url,text_company,text_location,text_email,text_id,image_avatar" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progress_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <Button
+        android:id="@+id/button_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/retry"
+        android:visibility="gone"
+        android:layout_gravity="center" />
+
+</FrameLayout>

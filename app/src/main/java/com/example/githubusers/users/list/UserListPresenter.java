@@ -10,7 +10,10 @@ import java.util.List;
 
 public class UserListPresenter {
 
-  public interface View {
+  public static final int LOAD_MORE_OFFSET = 10;
+  public static final int USER_PAGE_COUNT = 30;
+
+  public interface IView {
 
     public void onUserLoaded(List<User> userList);
 
@@ -18,15 +21,16 @@ public class UserListPresenter {
   }
 
   private final GitHubService service;
-  private View view;
+  private IView view;
   private Disposable disposable;
   private ArrayList<User> userList = new ArrayList<>();
+  private boolean allUserLoaded;
 
   public UserListPresenter(GitHubService service) {
     this.service = service;
   }
 
-  public void attachView(View view) {
+  public void attachView(IView view) {
     this.view = view;
     if (userList.isEmpty()) {
       loadInitialUsers();
@@ -40,12 +44,18 @@ public class UserListPresenter {
   }
 
   public void loadInitialUsers() {
-    userList.clear();
+    if (isLoading()) {
+      return;
+    }
     loadUsers(0);
   }
 
-  public void loadMoreUsers() {
-    loadUsers(userList.get(userList.size() - 1).getId());
+  public void setLastItemPosition(int lastItemPosition) {
+    if (lastItemPosition >= userList.size() - LOAD_MORE_OFFSET
+        && !isLoading()
+        && !allUserLoaded) {
+      loadUsers(userList.get(userList.size() - 1).getId());
+    }
   }
 
   public void stopLoading() {
@@ -53,12 +63,16 @@ public class UserListPresenter {
   }
 
   private void loadUsers(long id) {
-    stopLoading();
     disposable = service.getUsers(id)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .doOnSuccess(users -> userList.addAll(users))
+        .doOnSuccess(users -> allUserLoaded = users.size() < USER_PAGE_COUNT)
         .filter(users -> view != null)
         .subscribe(users -> view.onUserLoaded(users), error -> view.onError(error));
+  }
+
+  private boolean isLoading() {
+    return disposable != null && !disposable.isDisposed();
   }
 }

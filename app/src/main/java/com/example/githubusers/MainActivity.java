@@ -1,7 +1,6 @@
 package com.example.githubusers;
 
 import android.os.Bundle;
-import com.example.githubusers.users.list.UserListFragment;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -13,12 +12,5 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
-
-    if (savedInstanceState == null) {
-      getSupportFragmentManager().beginTransaction()
-          .add(R.id.container, new UserListFragment())
-          .commit();
-    }
-
   }
 }

@@ -3,16 +3,17 @@ package com.example.githubusers.users.list;
 import com.google.gson.annotations.SerializedName;
 import java.util.Objects;
 
-public final class User {
+public class User {
 
-  private long id;
-  @SerializedName("avatar_url") private String avatar;
-  @SerializedName("login") private String name;
+  protected long id;
+  @SerializedName("avatar_url")
+  protected String avatar;
+  protected String login;
 
-  public User(final long id, final String avatar, final String name) {
+  public User(final long id, final String avatar, final String login) {
     this.id = id;
     this.avatar = avatar;
-    this.name = name;
+    this.login = login;
   }
 
   public long getId() {
@@ -23,8 +24,8 @@ public final class User {
     return avatar;
   }
 
-  public String getName() {
-    return name;
+  public String getLogin() {
+    return login;
   }
 
   @Override
@@ -34,12 +35,12 @@ public final class User {
     User user = (User) o;
     return getId() == user.getId() &&
         Objects.equals(getAvatar(), user.getAvatar()) &&
-        Objects.equals(getName(), user.getName());
+        Objects.equals(getLogin(), user.getLogin());
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(getId(), getAvatar(), getName());
+    return Objects.hash(getId(), getAvatar(), getLogin());
   }
 
   @Override
@@ -47,7 +48,7 @@ public final class User {
     return "User{" +
         "id=" + id +
         ", avatar='" + avatar + '\'' +
-        ", name='" + name + '\'' +
+        ", login='" + login + '\'' +
         '}';
   }
 }
